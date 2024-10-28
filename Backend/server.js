@@ -1,26 +1,22 @@
 const express = require('express');
-const mysql = require('mysql2');
 const cors = require('cors');
 const dotenv = require('dotenv');
-
 dotenv.config();
+const pooldb = require('./database.js'); 
 const app = express();
 app.use(cors());
 app.use(express.json());
 
-// MySQL connection
-const db = mysql.createConnection({
-  host: process.env.DB_HOST,
-  user: process.env.DB_USER,
-  password: process.env.DB_PASSWORD,
-  database: process.env.DB_NAME,
-});
 
-db.connect(err => {
-  if (err) {
-    console.error('Database connection error:', err);
-  } else {
-    console.log('Connected to MySQL Database');
+
+// MySQL connection
+app.get('/api/test-db', async (req, res) => {
+  try {
+      const [results] = await pooldb.query('SELECT * FROM mense'); 
+      res.json({ solution: results[0].MENSE_NAAM}); 
+  } catch (error) {
+      console.error('Database query error:', error);
+      res.status(500).json({ error: 'Database error' });
   }
 });
 
