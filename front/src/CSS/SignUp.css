@@ -1,0 +1,38 @@
+div#SignUpForm{
+    border-radius: 10px;
+    display: flex;
+    margin: 2rem 10rem;
+    padding: 1rem;
+    box-shadow: 10px 10px 20px lightgray;
+}
+
+div#SignUpForm h1  ,div#SignUpForm button , div#SignUpForm p{
+    margin: 0.5rem;
+    padding: 0.1rem;
+    
+
+}
+
+div.FormText{
+    margin-left: auto;
+    margin-right: auto;
+}
+button.blink{
+    background-color: white;
+    border: none;
+    color: blue;
+    
+}
+
+button.abutton{
+    border-radius: 5px;
+    font-weight: bolder;
+    background-color: #7F2CCB;
+    color: white;
+}
+
+button.abutton:hover{
+    background-color: #751cc9;
+    color: rgb(224, 218, 218);
+}
+

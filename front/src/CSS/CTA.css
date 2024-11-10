@@ -1,0 +1,98 @@
+
+div.CTA {
+    display: grid;
+    grid-template-rows: 
+    1fr ;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 1rem;
+    grid-template-areas: 
+    "leftbox rightbox";
+    margin: 5rem;
+    box-shadow: 10px 10px 20px lightgray;
+    
+    
+}
+div.CTA div.leftbox{
+    grid-area: leftbox;
+    margin: 1rem;
+    padding: 0.2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+div.CTA div.rightbox{
+    grid-area: rightbox;
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+  
+}
+div.CTA div.rightbox img{
+  height: 500px;
+  
+}
+
+div.CTA div.leftbox h1 ,div.CTA div.leftbox h2 , div.CTA div.leftbox p ,div.CTA div.leftbox button{
+    margin: 0.4rem;
+}
+
+
+
+/* @media | media types bv. default = all , screen = computer screens ens. | (width)  */
+
+
+
+/* xl */
+@media (max-width: 1280px) {
+    
+}
+
+/* lg */
+@media (max-width: 1024px) {
+    div.CTA {
+        display: grid;
+        grid-template-rows: 
+        1fr 1fr;
+        grid-template-columns: 1fr;
+        grid-template-areas: 
+        "leftbox "
+        'rightbox';
+        margin: 2rem;
+        
+        
+    }
+    div.CTA div.rightbox img{
+        height: 25rem;
+    }
+}
+
+/* md */
+@media only screen and (max-width: 768px) {
+    div.CTA {
+        box-shadow: none;
+    }
+}
+
+/* sm */
+@media (max-width: 640px) {
+    div.CTA div.rightbox img{
+        height: 22rem;
+    }
+}
+
+/* xs */
+@media (max-width: 475px) {
+    div.CTA div.rightbox img{
+        height: 20rem;
+        
+    }
+    div.CTA div.leftbox{
+        margin: 0.5rem;    
+    }
+}
+  
+    
+
+
+
+

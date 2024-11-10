@@ -2,30 +2,23 @@ const express = require('express');
 const cors = require('cors');
 const dotenv = require('dotenv');
 dotenv.config();
-const pooldb = require('./database.js'); 
+
+const { getAll } = require('./database.js'); // Import getAll function from the database module
 const app = express();
+
 app.use(cors());
 app.use(express.json());
 
-
-
-// MySQL connection
-app.get('/api/test-db', async (req, res) => {
+app.get('/cat/all', async (req, res) => {
   try {
-      const [results] = await pooldb.query('SELECT * FROM mense'); 
-      res.json({ solution: results[0].MENSE_NAAM}); 
+    const cats = await getAll('CAT'); // Await the getAll function to retrieve data
+    res.json(cats); // Send the response with the retrieved data
   } catch (error) {
-      console.error('Database query error:', error);
-      res.status(500).json({ error: 'Database error' });
+    console.error('Error fetching CAT data:', error); // Log error for debugging
+    res.status(500).json({ error: 'Failed to retrieve data' }); // Send error response
   }
 });
 
-// Basic route to test the server
-app.get('/api', (req, res) => {
-  res.send('Hello from Express!');
-});
-
-// Starting the server
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);

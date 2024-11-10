@@ -1,0 +1,29 @@
+div#AboutUs {
+    background-color: #FFF0E6;
+}
+
+div#AboutUs div.leftbox h2 {
+    color: black;
+}
+
+div#AboutUs div.leftbox h1 {
+    color: #FFA6A0;
+}
+
+div#AboutUs div.leftbox p {
+    color: black;
+}
+
+div#AboutUs {
+    grid-template-areas:
+        "rightbox leftbox";
+}
+
+@media (max-width: 1024px) {
+    div#AboutUs {
+
+        grid-template-areas:
+            "rightbox "
+            'leftbox';
+    }
+}
