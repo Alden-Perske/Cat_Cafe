@@ -29,6 +29,17 @@ async function getAll(tableName) {
     }
 }
 
+async function searchName(tableName,searchword) {
+  try {
+      const column = `${tableName}_NAME`
+      const [rows] = await pooldb.query(`SELECT * FROM ?? WHERE ?? LIKE CONCAT('%', ?, '%')`, [tableName,column,searchword]);
+      return rows;
+  } catch (error) {
+      console.error(`Error fetching all records from ${tableName}:`, error);
+      throw error;
+  }
+}
+
 async function addUser(name,surname,email,password) {
   const [result] = await pooldb.query(`INSERT INTO USER(USER_NAME ,USER_SURNAME ,USER_EMAIL ,USER_PASSWORD ) VALUES (?,?,?,?)`,[name,surname,email,password])
   const id = result.insertId
@@ -44,7 +55,7 @@ async function addCat(alumni,vaccinated,breed,name,description,age) {
   
 }
 
-// addCat(0,0,"Siamese",'Milo',"Bruin en fyn" , 2)
+// searchName('CAT','ha')
 //     .then(res => {
 //         console.log(res);
 //     })
@@ -54,4 +65,4 @@ async function addCat(alumni,vaccinated,breed,name,description,age) {
 
 
 
-module.exports = { pooldb, getSingle, getAll };
+module.exports = { pooldb, getSingle, getAll , searchName };
