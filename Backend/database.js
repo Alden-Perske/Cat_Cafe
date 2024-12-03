@@ -18,6 +18,42 @@ async function getSingle(tableName, id) {
     }
 }
 
+async function getUserEmail(tableName, email) {
+    try {
+        const column = `${tableName}_EMAIL`
+        const [rows] = await pooldb.query(`SELECT * FROM ?? WHERE ?? = ?`, [tableName, column, email]);
+        return rows[0];
+    } catch (error) {
+        console.error(`Error fetching single record from ${tableName}:`, error);
+        throw error;
+    }
+}
+
+async function checkIfEmailExists(tableName, email) {
+    try {
+        const column = `${tableName}_EMAIL`;
+
+        // Execute the query to find the email
+        const [rows] = await pooldb.query(
+            `SELECT * FROM ?? WHERE ?? = ?`,
+            [tableName, column, email]
+        );
+
+        // Check if the email exists
+        if (rows.length > 0) {
+            console.log(`Email ${email} already exists in table ${tableName}.`);
+            return true; // Email exists
+        } else {
+            console.log(`Email ${email} does not exist in table ${tableName}.`);
+            return false; // Email does not exist
+        }
+    } catch (error) {
+        console.error(`Error checking email in ${tableName}:`, error);
+        throw error;
+    }
+}
+
+
 // Function to fetch all records from a table
 async function getAll(tableName) {
     try {
@@ -65,4 +101,4 @@ async function addCat(alumni,vaccinated,breed,name,description,age) {
 
 
 
-module.exports = { pooldb, getSingle, getAll , searchName };
+module.exports = { pooldb, getSingle, getAll , searchName , getUserEmail , addUser , checkIfEmailExists};
