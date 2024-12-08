@@ -1,3 +1,17 @@
+div#background {
+    margin: 0; /* Remove default margin */
+    padding: 1rem; /* Remove default padding */
+    box-sizing: border-box;
+    background-image: url('../Assests/cat_background.png'); /* Set the background image */
+    background-size: cover; /* Ensures the image covers the entire screen */
+    background-position: center; /* Centers the image */
+    background-repeat: no-repeat; /* Prevents the image from repeating */
+    background-attachment: fixed;
+    max-width: 100%;
+    height: auto !important;
+    display: flex;
+    flex-direction:column;
+}
 
 div.CTA {
     display: grid;
@@ -7,9 +21,9 @@ div.CTA {
     grid-gap: 1rem;
     grid-template-areas: 
     "leftbox rightbox";
-    margin: 5rem;
-    box-shadow: 10px 10px 20px lightgray;
-    
+    margin: 1rem auto;
+    border-radius: 25px;
+    width: 90vw;
     
 }
 div.CTA div.leftbox{
@@ -86,6 +100,8 @@ div.CTA div.leftbox h1 ,div.CTA div.leftbox h2 , div.CTA div.leftbox p ,div.CTA 
         height: 20rem;
         
     }
+
+  
     div.CTA div.leftbox{
         margin: 0.5rem;    
     }

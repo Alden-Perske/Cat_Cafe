@@ -7,10 +7,19 @@ import AboutUsCTA from '../Components/AboutUsCTA'
 function Home() {
   return (
     <>
-    <Navbar/>
-    <BookNowCTA/>
-    <AboutUsCTA/>
-    <Footer/>
+
+      <div id='sticky'>
+      <Navbar />
+      <div id='background'>
+        <BookNowCTA />
+        <AboutUsCTA />
+      </div>
+      <Footer />
+      </div>
+      
+
+
+
     </>
   )
 }

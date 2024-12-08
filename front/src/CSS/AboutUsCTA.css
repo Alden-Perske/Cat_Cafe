@@ -19,6 +19,10 @@ div#AboutUs {
         "rightbox leftbox";
 }
 
+div#AboutUs img{
+    padding: 1rem;
+}
+
 @media (max-width: 1024px) {
     div#AboutUs {
 

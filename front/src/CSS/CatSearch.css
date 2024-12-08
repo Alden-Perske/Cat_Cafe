@@ -1,11 +1,21 @@
+div#background {
+    margin: 0; /* Remove default margin */
+    padding: 0; /* Remove default padding */
+    background-image: url('../Assests/cat_background.png'); /* Set the background image */
+    background-size: cover; /* Ensures the image covers the entire screen */
+    background-position: center; /* Centers the image */
+    background-repeat: no-repeat; /* Prevents the image from repeating */
+    width: 100vw;
+    height: 80vh;
+    min-height: 80vh;
+}
 
 div#Cat{
     margin: 2rem;
     box-sizing: border-box;
-    background-color: #FF3636;
     padding: 0.5rem;
     border-radius: 25px;
-    box-shadow: 5px 5px 5px lightgray;
+    color: white;
 
 }
 
@@ -15,16 +25,16 @@ div#catTiles{
     width: 95%;
     flex-wrap: wrap;
     justify-content: center;
+    color: black;
 }
 
 div.catsingle{
     margin: 0.4rem;
     padding: 0.5rem;
-    
     min-width: 30%;
     text-align: center;
     border-radius: 25px;
-    box-shadow: 5px 5px 5px #b52121;
+    box-shadow: 5px 5px 5px rgb(36, 35, 35);
     background-color: white;
     display: grid;
     grid-template-areas: 
@@ -44,4 +54,8 @@ div.catsingle img{
     grid-area: catphoto;
     height: 10rem;
     
+}
+
+p#pcat{
+    color: white;
 }
