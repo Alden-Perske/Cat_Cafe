@@ -43,8 +43,13 @@ function SignUpForm() {
   
       // Handle success
       const data = await response.json();
-      console.log(data.user.USER_NAME)
       window.alert(`User created successfully with name: ${data.user.USER_NAME}`);
+      setName('')
+      setSurname('')
+      setEmail('')
+      setPassword('')
+      setConfirmPassword('')
+      
     } catch (err) {
       console.error("Error during signup:", err);
       window.alert("A network error occurred.");
