@@ -33,6 +33,18 @@ app.get('/cat/all', async (req, res) => {
   
 });
 
+app.get('/cat/:id' , async (req,res) => {
+  try {
+    const {id} = req.params
+    const seacrh = await getSingle("CAT" , id);
+    res.json(seacrh);
+  } catch (err) {
+    console.error('Error fetching CAT data:', err); // Log error for debugging
+    res.status(500).json({ error: 'Failed to retrieve data' }); // Send error response
+  }
+  
+})
+
 app.post('/user/signup', async (req, res) => {
   const { email, password, confirmPassword, name, surname } = req.body;
 

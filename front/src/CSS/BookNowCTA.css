@@ -29,4 +29,5 @@ div#BookNow div.leftbox button{
 div#BookNow div.leftbox button:hover{
     background-color: #751cc9;
     color: rgb(224, 218, 218);
+    cursor: pointer;
 }

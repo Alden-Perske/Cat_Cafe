@@ -9,6 +9,9 @@ div#background {
     height: 80vh;
     min-height: 80vh;
 }
+div#background a{
+    text-decoration: none;
+}
 
 div#Cat{
     margin: 2rem;
@@ -31,7 +34,7 @@ div#catTiles{
 div.catsingle{
     margin: 0.4rem;
     padding: 0.5rem;
-    min-width: 30%;
+    min-width: 25vw;
     text-align: center;
     border-radius: 25px;
     box-shadow: 5px 5px 5px rgb(36, 35, 35);
@@ -48,7 +51,11 @@ div.catsingleteks{
     display: flex;
     justify-content: space-around;
     flex-direction: column;
+    color: black;
+    
 }
+
+
 
 div.catsingle img{
     grid-area: catphoto;

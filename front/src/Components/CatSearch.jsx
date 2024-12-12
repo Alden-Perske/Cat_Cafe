@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheck, faClose } from '@fortawesome/free-solid-svg-icons';
 
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 function CatSearch() {
     const [cats, setCats] = useState([]);
@@ -34,6 +35,7 @@ function CatSearch() {
                 <div id='catTiles'>
                     {cats.length > 0 ? (
                         cats.map(cat => (
+                            <Link to={`/CatSingle/${cat.CAT_ID}`}>
                             <div key={cat.CAT_ID} className='catsingle'>
                                 <img src={catfoto} alt="" />
                                 <div className='catsingleteks'>
@@ -43,6 +45,7 @@ function CatSearch() {
                                 </div>
 
                             </div>
+                            </Link>
                         ))
                     ) : (
                         <p id='pcat'>No cats found matching your search.</p>

@@ -6,7 +6,6 @@ import '../CSS/General.css'
 function LoginForm() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [token , setToken] = useState('');
   
 
   const handleLogin =  async(email , password) => {

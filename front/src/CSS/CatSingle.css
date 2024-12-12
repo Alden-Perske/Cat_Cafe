@@ -1,0 +1,82 @@
+div#catOne{
+    margin: 1rem;
+    padding: 1rem;
+   
+    min-height: 65vh;
+    display: grid;
+    grid-template-areas: 
+    "image about"
+    "description1 description2";
+    grid-template-rows: 0.5fr 1fr;
+    grid-template-columns: 0.5fr 2fr ;
+    border-radius: 25px;
+    /* background-color: white; */
+}
+
+div#catimage{
+    grid-area: image;
+    background: linear-gradient(to bottom, #FF3636 50%, white 50%);
+    border-top-left-radius: 25px;
+    padding: 0.1rem;
+}
+
+div#catimage img{
+    height: 15rem;
+    clip-path: circle(42%); /* Clips the image into a circular shape */
+    border: 10px solid white;
+    
+}
+
+div#about{
+    grid-area: about;
+    border-top-right-radius: 25px;
+    color: white;
+    font-size: 2rem;
+    background: linear-gradient(to bottom, #FF3636 50%, white 50%);
+}
+
+div#catdescription1{
+    grid-area: description1;
+    background-color: white;
+    border-bottom-left-radius: 25px;
+    padding-left: 1rem;
+}
+
+div#catdescription1 h3 {
+    padding: 0;
+    margin: 0;
+   
+}
+
+button#meetMeButton{
+   
+    align-self: center;
+    width: 8rem;
+    height: 3rem;
+    padding: 0.2rem;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 5px;
+    font-weight: bolder;
+    font-size: larger;
+    background-color: #7F2CCB;
+    color: white;
+}
+button#meetMeButton:hover{
+
+background-color: #751cc9;
+color: rgb(224, 218, 218);
+cursor: pointer;
+
+}
+
+div#catdescription2{
+    grid-area: description2;
+    background-color: white;
+    padding: 0.1rem;
+    padding-right: 4rem;
+    border-bottom-right-radius: 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content:space-around;
+}
