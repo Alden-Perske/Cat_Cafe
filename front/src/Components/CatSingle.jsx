@@ -54,7 +54,7 @@ function CatSingle() {
                         </div>
 
                         <div id='catdescription1'>
-                            <h1>About</h1>
+                            <h1 className='dissappear'>About</h1>
                             <br />
                             <h3>Name: {cat.CAT_NAME}</h3>
                             <h3>Age: {cat.CAT_AGE}</h3>
