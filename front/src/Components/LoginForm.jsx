@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import '../CSS/SignUp.css'
 import '../CSS/General.css'
 
 function LoginForm() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  
+  const navigate = useNavigate()
 
   const handleLogin =  async(email , password) => {
     if(email === "" || password === ""){
@@ -37,6 +37,7 @@ function LoginForm() {
       localStorage.setItem('token',data.token)
       setEmail('')
       setPassword('')
+      navigate('/')
       
     } catch (err) {
       console.error("There was an error" , err);

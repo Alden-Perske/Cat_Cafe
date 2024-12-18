@@ -1,12 +1,14 @@
 import React from 'react'
 import Navbar from '../Components/Navbar'
 import Footer from '../Components/Footer'
+import Booking from '../Components/Booking'
 
 function Bookings() {
+  
   return (
     <>
     <Navbar/>
-    <div>hallo</div>
+    <Booking/>
     <Footer/>
     </>  
 )

@@ -9,6 +9,18 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+app.get('/user' ,authToken ,  async(req,res) =>{
+
+  try {
+    res.json(req.user)
+  } catch (error) {
+    console.error('Error fetching USER data:', error); // Log error for debugging
+    res.status(500).json({ error: 'Failed to retrieve data' }); // Send error response
+  }
+  
+
+})
+
 app.get('/cat/all', async (req, res) => {
   const searchTerm = req.query.term || '';
   
@@ -95,7 +107,7 @@ app.post('/user/login', async (req, res) => {
 
     }
 
-    const token =  jsonwebtoken.sign({USER_EMAIL:user.USER_EMAIL , USER_ID:user.USER_ID},process.env.SECRET_TOKEN);
+    const token =  jsonwebtoken.sign({USER_EMAIL:user.USER_EMAIL , USER_ID:user.USER_ID , USER_NAME:user.USER_NAME},process.env.SECRET_TOKEN);
     return res.status(200).json({token:token})
 
     
@@ -111,15 +123,15 @@ function authToken (req,res,next){
 
   
   if(!token){
-      res.status(404).json({message:"missing token"})
+      return res.status(404).json({message:"missing token"})
   }
-  jsonwebtoken.verify(token,process.env.SECRET_TOKEN) , (err,user) =>{
+  jsonwebtoken.verify(token,process.env.SECRET_TOKEN , (err,user) =>{
       if(err)
           {res.status(400).json({message:"Not valid token"})
       }
       req.user = user
       next()
-}
+})
 }
 
 
