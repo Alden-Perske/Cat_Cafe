@@ -4,7 +4,7 @@ const dotenv = require('dotenv');
 const jsonwebtoken = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 dotenv.config();
-const { getAll , searchName, getSingle ,getUserEmail , addUser , checkIfEmailExists} = require('./database.js'); // Import getAll function from the database module
+const { getAll , searchName, getSingle ,getUserEmail , addUser , checkIfEmailExists , addBooking} = require('./database.js'); // Import getAll function from the database module
 const app = express();
 app.use(cors());
 app.use(express.json());
@@ -44,6 +44,21 @@ app.get('/cat/all', async (req, res) => {
   }
   
 });
+
+app.post('/booking', authToken , async (req,res) => {
+  try {
+    const {cat_id,date,time} =  req.body
+    const createBooking = await addBooking(cat_id,req.user.USER_ID,date,time)
+
+    return res.status(201).json({ message: "Booking created successfully", booking:createBooking  });
+
+
+    
+  } catch (error) {
+    console.error("Error with booking:", error);
+    res.status(500).json({ error: "Internal server error" });
+  }
+})
 
 app.get('/cat/:id' , async (req,res) => {
   try {

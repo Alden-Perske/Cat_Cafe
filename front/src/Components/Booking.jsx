@@ -11,16 +11,17 @@ function Booking() {
     }
 
     const formatToSQLDate = (date) => {
-        const year = date.getFullYear(); // Get the full year
-        const month = String(date.getMonth() + 1).padStart(2, '0'); // Months are 0-indexed
-        const day = String(date.getDate()).padStart(2, '0'); // Get day and pad with 0 if needed
-        return `${year}-${month}-${day}`; // Format as YYYY-MM-DD
+        const year = date.getFullYear(); 
+        const month = String(date.getMonth() + 1).padStart(2, '0'); 
+        const day = String(date.getDate()).padStart(2, '0');
+        return `${year}-${month}-${day}`;
       };
 
     const [token,setToken] = useState('')
     const [user,setUser] = useState('')
     const [date, setDate] = useState(formatToSQLDate(new Date()));
     const [time,setTime] = useState("9:00")
+    const [catID, setCatID] = useState(null)
 
     
 
@@ -72,6 +73,41 @@ function Booking() {
 
     // headers:`Bearer ${token}`
 
+    const handleCreateBooking = async(catID,data,time) => {
+        try {
+            const createBooking = await 
+            fetch('http://localhost:5000/booking' , {
+                method:"POST",
+                headers:{
+                    "Content-Type":"application/json",
+                    "Authorization":`Bearer ${token}`
+                },
+                body: JSON.stringify(
+                    {cat_id:catID,
+                    date:date,
+                    time:time
+                    }
+                )
+            })
+
+            if(!createBooking.ok){
+                const err = await res.json();
+                window.alert(`Error: ${err.error}`)
+            }
+
+            const res = createBooking.json()
+            window.alert("Booking succesfully booked")
+            setCatID(null)
+            setDate('')
+            setTime("9:00")
+
+
+        } catch (error) {
+            console.error("There was an error" , error);
+
+        }
+    }
+
   return (
     <div id="background">
         <div id='Booking'>
@@ -94,7 +130,7 @@ function Booking() {
                         </div>
                         
                         <div id='tyd'>
-                            <label for="timeslot"><h3>Select a time</h3></label>
+                            <label htmlFor="timeslot"><h3>Select a time</h3></label>
                                 <select id="timeslotlist" name="timeslot" value={time} onChange={e => setTime(e.target.value)}>
                                     <option value="09:00">09:00</option>
                                     <option value="10:00">10:00</option>
@@ -107,9 +143,7 @@ function Booking() {
                                     <option value="17:00">17:00</option>
                                 </select>
                         </div>
-                        
-                        {/* <input type="time" step="3600" /> */}
-                        {console.log(date)}
+
                         
                         
                     </div>
@@ -121,17 +155,15 @@ function Booking() {
                         <h2>Booked date</h2>
                             <label className='labels'>Booking Date:</label>
                             <br />
-                            <input type="text" className='inputs' value={date}  />
+                            <p>{date}</p>
                             <br />
 
                             <label className='labels'>Booking Time:</label>
                             <br />
-                            <input type="text" className='inputs' value={time}  />
-                            <br />
-                            <br />
+                            <p>{time}</p>
                             <br />
 
-                            <button id='scheduleButton'>Schedule</button>
+                            <button id='scheduleButton' onClick={() => {handleCreateBooking(catID,date,time)}}>Schedule</button>
                     </div>
                     </>
                     

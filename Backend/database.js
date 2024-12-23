@@ -91,6 +91,14 @@ async function addCat(alumni,vaccinated,breed,name,description,age) {
   
 }
 
+async function addBooking(cat_id,user_id,date,time) {
+    const [result] = await pooldb.query(`INSERT INTO BOOKING(CAT_ID ,USER_ID ,BOOKING_DATE,BOOKING_TIME) VALUES (?,?,?,?)`
+      ,[cat_id,user_id,date,time])
+    const id = result.insertId
+    return getSingle("BOOKING" , id)
+    
+  }
+
 // searchName('CAT','ha')
 //     .then(res => {
 //         console.log(res);
@@ -101,4 +109,4 @@ async function addCat(alumni,vaccinated,breed,name,description,age) {
 
 
 
-module.exports = { pooldb, getSingle, getAll , searchName , getUserEmail , addUser , checkIfEmailExists};
+module.exports = { pooldb, getSingle, getAll , searchName , getUserEmail , addUser , checkIfEmailExists , addBooking};
