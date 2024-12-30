@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams ,Link} from 'react-router-dom';
 import Navbar from './Navbar';
 import Footer from './Footer';
 import catfoto from '../Assests/cat_1.png'
@@ -58,11 +58,14 @@ function CatSingle() {
                             <br />
                             <h3>Name: {cat.CAT_NAME}</h3>
                             <h3>Age: {cat.CAT_AGE}</h3>
+                            <h3>Breed: {cat.CAT_BREED}</h3>
                             <h3>Vaccinated: {cat.CAT_VACCINATED === 1 ? <FontAwesomeIcon icon={faCheck} style={{ color: 'lightgreen' }} /> : <FontAwesomeIcon icon={faClose} style={{ color: 'red' }} />}</h3>
                         </div>
                         <div id='catdescription2'>
-                            <p>Meet Whiskers, an adventurous feline with striking emerald-green eyes that sparkle with curiosity. Always eager to explore, Whiskers can often be found scaling bookshelves, peering into hidden nooks, or chasing fluttering leaves outdoors. With a daring spirit and a playful nature, this cat brings excitement and a touch of mystery to every day!</p>
-                            <button id='meetMeButton'>Meet me</button>
+                            <p>{cat.CAT_DESCRIPTION}</p>
+                            <Link to='/Bookings'>
+                            <button id='meetMeButton'>Meet me</button></Link>
+                            
                         </div>
 
                     </div>

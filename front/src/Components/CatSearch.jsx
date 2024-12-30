@@ -40,8 +40,12 @@ function CatSearch() {
                                 <img src={catfoto} alt="" />
                                 <div className='catsingleteks'>
                                     <h1>{cat.CAT_NAME}</h1>
+                                    <div>
                                     <h4>Age: {cat.CAT_AGE}</h4>
+                                    <h4>Breed: {cat.CAT_BREED}</h4>
                                     <h4>Vaccinated: {cat.CAT_VACCINATED === 1 ? <FontAwesomeIcon icon={faCheck} style={{ color: 'lightgreen' }} /> : <FontAwesomeIcon icon={faClose} style={{ color: 'red' }} />}</h4>
+                                    </div>
+                                    
                                 </div>
 
                             </div>

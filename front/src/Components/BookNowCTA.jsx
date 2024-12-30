@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import WitLogo from '../Assests/CatCafe_logo_wit.png'
 import '../CSS/CTA.css'
 import '../CSS/BookNowCTA.css'
@@ -17,16 +18,19 @@ function BookNowCTA() {
             
 
             <p>
-                You make a booking to come visit , 
-                <br />
-                drink coffee and hopefully adopt
-                <br />
-                one of our feline friends in need
-                <br />
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Fugiat ipsam vero obcaecati! Non voluptatibus atque omnis earum sed obcaecati quos vitae, error illo nihil est minima placeat iusto dolorem possimus.
+            You make a booking to come visit,  
+<br />
+and immerse yourself in the cozy atmosphere of our café, where the scent of freshly brewed coffee fills the air and the company of our friendly felines brings warmth to your heart.  
+
+<br />
+As you spend time with our cats, you may just find yourself falling in love with one of them. We hope that you’ll consider adopting one of our lovable feline friends, who are in need of a forever home.  
+ 
+<br />
+Make a booking today to meet your newest family member and make a difference in the life of a cat in need. We can’t wait to welcome you to *Rochelle’s Cat Café* and help you find the perfect companion!
             </p>
 
-            <button>Book Now</button>
+            <Link to='/Bookings'><button>Book Now</button></Link>
+            
 
 
         </div>

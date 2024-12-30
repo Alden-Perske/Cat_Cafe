@@ -5,7 +5,7 @@ import '../CSS/Navbar.css'
 import '../CSS/General.css'
 import { Link, useNavigate } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBars } from '@fortawesome/free-solid-svg-icons';
+import { faBars,faArrowRight } from '@fortawesome/free-solid-svg-icons';
 
 function Navbar() {
   const [toggleBar , setToggleBar] = useState(false);
@@ -43,7 +43,6 @@ function Navbar() {
             <li><Link to='/'>Home</Link></li>
             <li><Link to='/Bookings'>Bookings</Link></li>
             <li><Link to='/CatsAll'>Cats</Link></li>
-            <li><a href="">About Us</a></li>
           </ul>
           
         </div>
@@ -73,7 +72,7 @@ function Navbar() {
             <li><Link to='/'>Home</Link></li>
             <li><Link to='/Bookings'>Bookings</Link></li>
             <li><Link to='/CatsAll'>Cats</Link></li>
-            <li><a href="">About Us</a></li>
+            <li><FontAwesomeIcon icon={faArrowRight}  onClick={() => {setToggleBar(!toggleBar)}}/></li>
             </ul>
           </nav>
         

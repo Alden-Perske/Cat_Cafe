@@ -7,6 +7,12 @@ div#footer {
     background-color: #FFA6A0;
 }
 
+div#footerInner {
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+}
+
 div#footer h1 , div#footer h3{
     margin: 0.4rem;
 }
@@ -18,5 +24,18 @@ div#footer h1 , div#footer h3 a{
 
  div#footer h3 a:hover{
     text-decoration: none;
+    color: #FFF0E6;
+}
+
+div#footerIcons a{
+    color: black;
+}
+
+div#footerIcons svg{
+    height: 2rem;
+    margin: 0.5rem;
+}
+
+div#footerIcons svg:hover{
     color: #FFF0E6;
 }

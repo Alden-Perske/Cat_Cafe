@@ -6,9 +6,7 @@ import Calendar from 'react-calendar';
 
 function Booking() {
 
-    const formatToSQLTime = (timeString) => {
-        return `${timeString}:00`
-    }
+    
 
     const formatToSQLDate = (date) => {
         const year = date.getFullYear(); 
@@ -19,15 +17,14 @@ function Booking() {
 
     const [token,setToken] = useState('')
     const [user,setUser] = useState('')
-    const [date, setDate] = useState(formatToSQLDate(new Date()));
+    const [date, setDate] = useState(null);
     const [time,setTime] = useState("9:00")
     const [catID, setCatID] = useState(null)
 
     
 
     const handleDate = (date) => {
-        const sqldate = formatToSQLDate(date)
-        setDate(sqldate)
+        setDate(date)
     }
 
 
@@ -73,7 +70,12 @@ function Booking() {
 
     // headers:`Bearer ${token}`
 
-    const handleCreateBooking = async(catID,data,time) => {
+    const handleCreateBooking = async(catID,date,time) => {
+        const currentDate = new Date();
+        if(date < currentDate){
+            return window.alert(`Error: Date(${date}) has already passed`)
+        }
+        date = formatToSQLDate(date)
         try {
             const createBooking = await 
             fetch('http://localhost:5000/booking' , {
@@ -149,13 +151,11 @@ function Booking() {
                     </div>
 
                     <div id='calenderform'>
-                        <br />
-                        <br />
-                        <br />
+                        
                         <h2>Booked date</h2>
                             <label className='labels'>Booking Date:</label>
                             <br />
-                            <p>{date}</p>
+                            <p>{date ? date.toISOString().split("T")[0] : "None"}</p>
                             <br />
 
                             <label className='labels'>Booking Time:</label>

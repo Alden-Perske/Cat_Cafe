@@ -90,15 +90,20 @@ div#navbar{
 
     nav#faBarsLink{
         position: fixed;
-        top: 4rem;
-        right: 1.4rem;
+        top: 0rem;
+        right: 0rem;
         padding: 0;
+        border: 2px solid black;
+        height: 100vh;
+        width: 50vw;
+        background-color: #FFA6A0;
+       
         
         
     }
 
     nav#faBarsLink ul{
-        padding: 0;
+        padding: 1rem;
         margin: 0;
         text-align: center;
     }
@@ -106,6 +111,8 @@ div#navbar{
     nav#faBarsLink ul li{
         padding: 0.5rem 0.2rem ;
         margin: 0;
+        margin-bottom: 2rem;
+        font-size: large;
         list-style: none;
         color: black;
         background-color: #FFA6A0;
